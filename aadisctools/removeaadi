@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+ERRRED="\033[1;31m"
+ENDL="\033[0m"
+
+if [[ $# >1 ]]; then
+	echo -e "${ERRRED}ERROR! TOO MANY ARGUEMENTS${ENDL}"
+	exit 1
+elif [[ $# < 1  ]]; then
+	echo -e "${ERRRED}ERROR! TOO FEW ARGUEMENTS${ENDL}" 
+	exit 1
+fi
+
+aliasfile=$HOME/.aadi_aliases
+tempfile=$HOME/.tempaliasaadi
+
+lines=$(grep "alias"* $aliasfile)
+[[ $? != 0 ]] && exit 1
+
+IFS=$'\n'
+
+/usr/local/bin/aadisctools/checkaadi $1
+[[ $? != 0 ]] && exit 1
+
+touch $tempfile
+[[ $? != 0 ]] && exit 1
+
+for line in $lines; do
+	if [[ $line == "alias $1="*  ]]; then
+		# Eat 5 Star do nothing
+		# echo "alias $1=\"cd \"$newpath\"\"">>$tempfile
+	else	
+		echo $line >> $tempfile	
+	fi
+done
+
+cat $tempfile>$aliasfile
+[[ $? != 0 ]] && exit 1
+
+mv $tempfile $HOME/.Tr/
+
+exit 0
+ 

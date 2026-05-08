@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+ERRRED="\033[1;031m"
+NTXT="\033[0m"
+IFS=$'\n'
+lines=$(grep "alias ="* $HOME/.bash_aliases)
+echo ${lines[0]}
+
+
+
+
+exit 0

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+TOOLS_DIR="/usr/local/bin/aadisctools"
+if [[ $1 == '-c' ]]; then
+	$TOOLS_DIR/checkaadi ${@:2}
+	exit $?
+elif [[ $1 == '-n' ]]; then
+	$TOOLS_DIR/makeaadi ${@:2}
+	exit $?
+elif [[ $1 == '-s' ]]; then
+	$TOOLS_DIR/howaadi ${@:2}
+	exit $?
+elif [[ $1 == '-r' ]]; then
+	$TOOLS_DIR/renameaadi ${@:2}
+	exit $?
+elif [[ $1 == '-R' ]]; then
+	$TOOLS_DIR/removeaadi ${@:2}
+	exit $?
+elif [[ $1 == '--help' ]]; then
+	echo -e $(cat $TOOLS_DIR/helptext)  
+	exit $?
+fi
+echo -e "Error! WTF WAS THAT\nPlease use \"aadisc --help\" for help"
+exit 1
