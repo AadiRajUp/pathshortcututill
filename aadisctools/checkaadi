@@ -2,19 +2,18 @@
 ERRRED="\033[1;031m"
 NTXT="\033[0m"
 if [[ $# > 1  ]]; then
-	echo "${ERRRED}Too many arguments $@${NTXT}"
+	echo -e "${ERRRED}Too many arguments $@${NTXT}">&2
 	exit 1
 fi
 
 if [[ $# < 1  ]]; then
-	echo "${ERRRED}Too few arguments $@${NTXT}"
+	echo -e "${ERRRED}Too few arguments $@${NTXT}">&2
 	exit 1
 fi
 
-IFS=$'\n'
 lines=$(grep "alias $1=" $HOME/.aadi_aliases)
 if [[ -z $lines  ]]; then
-	echo -e "${ERRRED}ERROR! ALIAS FOR \"$1\" DOESNT EXIST${NTXT}"
+	echo -e "${ERRRED}ERROR! ALIAS FOR \"$1\" DOESNT EXIST${NTXT}">&2
 	exit 1
 fi
 exit 0

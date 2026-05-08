@@ -3,10 +3,10 @@ ERRRED="\033[1;31m"
 ENDL="\033[0m"
 
 if [[ $# >1 ]]; then
-	echo -e "${ERRRED}ERROR! TOO MANY ARGUEMENTS${ENDL}"
+	echo -e "${ERRRED}ERROR! TOO MANY ARGUEMENTS${ENDL}" >&2
 	exit 1
 elif [[ $# < 1  ]]; then
-	echo -e "${ERRRED}ERROR! TOO FEW ARGUEMENTS${ENDL}" 
+	echo -e "${ERRRED}ERROR! TOO FEW ARGUEMENTS${ENDL}" >&2
 	exit 1
 fi
 
@@ -15,8 +15,8 @@ tempfile=$HOME/.tempaliasaadi
 
 
 lines=$(grep "alias"* $aliasfile)
-IFS=$'\n'
 /usr/local/bin/aadisctools/checkaadi $1
+
 [[ $? != 0 ]] && exit 1
 
 read -p "Where do you want \"$1\" to lead? " newpath
@@ -24,12 +24,14 @@ read -p "Where do you want \"$1\" to lead? " newpath
 
 if [ -e "$newpath" ]; then
 else
-	echo -e "${ERRRED}ERROR! Path does not exist${ENDL}"
+	echo -e "${ERRRED}ERROR! Path does not exist${ENDL}">&2
 	exit 1
 fi
 
 touch $tempfile
 [[ $? != 0 ]] && exit 1
+
+IFS=$'\n'
 
 for line in $lines; do
 	if [[ $line == "alias $1="*  ]]; then
@@ -38,7 +40,7 @@ for line in $lines; do
 		echo $line >> $tempfile	
 	fi
 done
-
+unset IFS
 cat $tempfile>$aliasfile
 [[ $? != 0 ]] && exit 1
 
