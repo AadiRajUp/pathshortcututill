@@ -15,8 +15,9 @@
 
 `aadisc` is a bash mini-project that makes working with shell aliases fast and frictionless. Instead of manually editing your `.bashrc`, you can create, check, show, replace, and remove aliases straight from the terminal.
 
-The feature list is still expanding — and yes, it's purposefully made less versatile than it could be.
+The feature list is still expanding and yes, it's purposefully made less versatile than it could be.
 
+This project was also a means for me to learn VIM.
 ---
 
 ## Usage
@@ -64,7 +65,7 @@ aadisc -r projects ~/work/projects
 
 **Remove an alias**
 ```bash
-aadisc -d projects
+aadisc -R projects
 ```
 
 ---
