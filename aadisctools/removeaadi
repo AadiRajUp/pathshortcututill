@@ -38,7 +38,7 @@ unset IFS
 cat $tempfile>$aliasfile
 [[ $? != 0 ]] && exit 1
 
-mv $tempfile $HOME/.Tr/
+rm $tempfile
 
 exit 0
  
