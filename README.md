@@ -7,15 +7,15 @@
  ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚══════╝ ╚═════╝
 ```
 
-> A terminal utility for creating and managing shell aliases — built by **Aadi**.
+> A terminal utility for creating and managing shell shortcuts — built by **Aadi**.
 
 ---
 
 ## What is aadisc?
 
-`aadisc` is a bash mini-project that makes working with shell aliases fast and frictionless. Instead of manually editing your `.bashrc`, you can create, check, show, replace, and remove aliases straight from the terminal.
+`aadisc` is a bash mini-project that makes working with shell shortcuts fast and frictionless. Instead of manually editing your `.bashrc`, you can create, check, show, replace, and remove shortcuts straight from the terminal.
 
-The feature list is still expanding and yes, it's purposefully made less versatile than it could be.
+~~The feature list is still expanding~~ Its completed (yaay) and yes, it's purposefully made less versatile than it could be.
 
 This project was also a means for me to learn VIM.
 ---
@@ -32,41 +32,48 @@ aadisc [flag] [args]
 
 | Flag | Description | Usage |
 |------|-------------|-------|
-| `-n` | Create a new alias | `aadisc -n <name> <path>` |
-| `-c` | Check if an alias already exists | `aadisc -c <name>` |
-| `-s` | Show what a given alias points to | `aadisc -s <name>` |
-| `-r` | Replace an existing alias | `aadisc -r <name> <new-path>` |
-| `-R` | Remove an existing alias | `aadisc -d <name>` |
+| `-n` | Create a new shortcut | `aadisc -n <name> <path>` |
+| `-c` | Check if a shortcut already exists | `aadisc -c <name>` |
+| `-s` | Show what a given shortcut points to | `aadisc -s <name>` |
+| `-r` | Replace an existing shortcut | `aadisc -r <name> <new-path>` |
+| `-R` | Remove an existing shortcut | `aadisc -d <name>` |
+| `-l` | Lists all the shortcuts | `aadisc -l` |
 
 ---
 
 ## Examples
 
-**Create a new alias**
+**Create a new shortcut**
 ```bash
 aadisc -n projects ~/dev/projects
 ```
 
-**Check if an alias exists**
+**Check if a shortcut exists**
 ```bash
 aadisc -c projects
 ```
 
-**See where an alias points**
+**See where a shortcut points**
 ```bash
 aadisc -s projects
 # → ~/dev/projects
 ```
 
-**Replace an existing alias**
+**Replace an existing shortcut**
 ```bash
 aadisc -r projects ~/work/projects
 ```
 
-**Remove an alias**
+**Remove a shortcut**
 ```bash
 aadisc -R projects
 ```
+
+**List all shortcuts**
+```bash
+aadisc -l
+```
+
 
 ---
 
@@ -74,4 +81,5 @@ aadisc -R projects
 
 - Developed and maintained by **Aadi**
 - Intentionally minimal by design
-- More flags and features coming soon
+- ~~More flags and features coming soon~~
+- This is considered completed for now
